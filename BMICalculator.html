@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Calculator | Krishna Sah (22cs075) Assessment</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+    }
+    .form-container {
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .form-group input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #3e8e41;
+    }
+    #result {
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>BMI Calculator | KRISHNA SAH (22CS075) Assessment</h1>
+    </div>
+    <div class="form-container">
+      <form>
+        <div class="form-group">
+          <label for="weight">Weight (in kg):</label>
+          <input type="number" id="weight" required>
+        </div>
+        <div class="form-group">
+          <label for="height">Height (in meters):</label>
+          <input type="number" id="height" required>
+        </div>
+        <button type="button" class="button" onclick="calculateBMI()">Calculate BMI</button>
+      </form>
+    </div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      const weight = document.getElementById("weight").value;
+      const height = document.getElementById("height").value;
+      const bmi = weight / (height * height);
+      const resultElement = document.getElementById("result");
+
+      if (bmi < 18.5) {
+        resultElement.innerHTML = `Your BMI is ${bmi.toFixed(2)}. You are underweight. You may need to gain some weight to reach a healthy weight.`;
+      } else if (bmi >= 18.5 && bmi < 25) {
+        resultElement.innerHTML = `Your BMI is ${bmi.toFixed(2)}. You are normal weight. Congratulations, you are at a healthy weight!`;
+      } else if (bmi >= 25 && bmi < 30) {
+        resultElement.innerHTML = `Your BMI is ${bmi.toFixed(2)}. You are overweight. You may need to lose some weight to reach a healthy weight.`;
+      } else {
+        resultElement.innerHTML = `Your BMI is ${bmi.toFixed(2)}. You are obese. You may need to lose a significant amount of weight to reach a healthy weight.`;
+      }
+    }
+  </script>
+</body>
+</html>
